@@ -2,10 +2,12 @@
 
 To run:
 
-Server
+Server:
   gcc udps.c -o s
+  
   ./s 2050
  
-Client
+Client:
   gcc udpc.c -o c
+  
   ./c localhost 2050
