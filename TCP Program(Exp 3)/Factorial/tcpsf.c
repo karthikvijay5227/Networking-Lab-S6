@@ -5,10 +5,9 @@
 #include<stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 int main()
 {
-	char buf[100];
+	char buf[100],bufs[100];
 	int k;
 	socklen_t len;
 	int sock_desc,temp_sock_desc;
@@ -54,9 +53,10 @@ int main()
 	int fact=1;
 	for(int i=1;i<=c;i++)
 		fact*=i;
-	printf("\nThe factorial of the number passed by client is:%d\n",fact);
-	close(temp_sock_desc);
-	
+	sprintf(bufs,"%d", fact);
+	k=send(temp_sock_desc,bufs,100,0);
+	if(k==-1)
+		printf("Error in sending to client\n");
 	return 0;
 }
 	
