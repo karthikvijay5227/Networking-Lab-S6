@@ -39,24 +39,28 @@ int main()
 		
 	len=sizeof(client);
 	temp_sock_desc=accept(sock_desc,(struct sockaddr*) &client,&len);
-	
+		
 	if(temp_sock_desc==-1)
 		printf("Error in temporary socket creation\n");
+	for(;;)
+	{	
+		k=recv(temp_sock_desc,buf,100,0);
 		
-	k=recv(temp_sock_desc,buf,100,0);
-	
-	if(k==-1)
-		printf("Error in receiving\n");
-		
-	printf("\nMessage got from client is:%s",buf);
-	int c = atoi(buf);
-	int fact=1;
-	for(int i=1;i<=c;i++)
-		fact*=i;
-	sprintf(bufs,"%d", fact);
-	k=send(temp_sock_desc,bufs,100,0);
-	if(k==-1)
-		printf("Error in sending to client\n");
+		if(k==-1)
+			printf("Error in receiving\n");
+			
+		int c = atoi(buf);
+		if(c==-1)
+			exit(0);
+		printf("\nMessage got from client is:%s",buf);
+		int fact=1;
+		for(int i=1;i<=c;i++)
+			fact*=i;
+		sprintf(bufs,"%d", fact);
+		k=send(temp_sock_desc,bufs,100,0);
+		if(k==-1)
+			printf("Error in sending to client\n");
+	}
 	return 0;
 }
 	
