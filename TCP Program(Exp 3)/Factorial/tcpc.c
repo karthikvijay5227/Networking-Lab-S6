@@ -25,16 +25,20 @@ int main()
 
 	if(k==-1)
 		printf("Error in connecting to server\n");
-
-	printf("\nEnter data to be send:");
-	fgets(buf,100,stdin);
-	k=send(sock_desc,buf,100,0);
-	if(k==-1)
-		printf("Error in sending\n");
-	k=recv(sock_desc,buf,100,0);
-	if(k==-1)
-		printf("Error in receiving\n");
-	printf("The factorial of number passed to server is:%s\n",buf);
+	for(;;)
+	{
+		printf("\nEnter data to be send:");
+		fgets(buf,100,stdin);
+		if(atoi(buf)==-1)
+			exit(0);
+		k=send(sock_desc,buf,100,0);
+		if(k==-1)
+			printf("Error in sending\n");
+		k=recv(sock_desc,buf,100,0);
+		if(k==-1)
+			printf("Error in receiving\n");
+		printf("The factorial of number passed to server is:%s\n",buf);
+	}
 	close(sock_desc);
 	return 0;
 }
