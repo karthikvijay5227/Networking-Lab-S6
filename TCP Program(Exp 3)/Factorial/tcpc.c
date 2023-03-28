@@ -9,9 +9,9 @@ int main()
 {
 	char buf[100];
 	int k;
-
+	socklen_t len;
 	int sock_desc;
-	struct sockaddr_in client;
+	struct sockaddr_in server,client;
 	sock_desc=socket(AF_INET, SOCK_STREAM,0);
 
 	if(sock_desc==-1)
@@ -31,6 +31,10 @@ int main()
 	k=send(sock_desc,buf,100,0);
 	if(k==-1)
 		printf("Error in sending\n");
+	k=recv(sock_desc,buf,100,0);
+	if(k==-1)
+		printf("Error in receiving\n");
+	printf("The factorial of number passed to server is:%s\n",buf);
 	close(sock_desc);
 	return 0;
 }
