@@ -5,7 +5,6 @@
 #include<stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 int main()
 {
 	char buf[100];
@@ -40,20 +39,22 @@ int main()
 		
 	len=sizeof(client);
 	temp_sock_desc=accept(sock_desc,(struct sockaddr*) &client,&len);
-	
+		
 	if(temp_sock_desc==-1)
 		printf("Error in temporary socket creation\n");
-		
-	k=recv(temp_sock_desc,buf,100,0);
-	
-	if(k==-1)
-		printf("Error in receiving\n");
-		
-	printf("\nMessage got from client is:%s",buf);
-	close(temp_sock_desc);
-	
+	for(;;)
+	{	
+		k=recv(temp_sock_desc,buf,100,0);
+		printf("\n[From Client]:%s",buf);
+		if(k==-1)
+			printf("Error in receiving\n");
+		if(strcmp(buf,"Exit")==0 || strcmp(buf,"exit")==0)
+			exit(0);
+		printf("[To Client]:");
+		fgets(buf,100,stdin);
+		k=send(temp_sock_desc,buf,100,0);
+		if(k==-1)
+			printf("Error in sending to client\n");
+	}
 	return 0;
 }
-	
-	
-	
