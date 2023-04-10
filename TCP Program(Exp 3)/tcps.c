@@ -48,8 +48,11 @@ int main()
 		printf("\n[From Client]:%s",buf);
 		if(k==-1)
 			printf("Error in receiving\n");
-		if(strcmp(buf,"Exit")==0 || strcmp(buf,"exit")==0)
+		if(atoi(buf)==1111)
+		{
+			printf("Exiting!!!");
 			exit(0);
+		}
 		printf("[To Client]:");
 		fgets(buf,100,stdin);
 		k=send(temp_sock_desc,buf,100,0);
