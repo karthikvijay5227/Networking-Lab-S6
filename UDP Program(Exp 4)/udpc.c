@@ -10,16 +10,38 @@ int main(int argc,char *argv[])
 	if(argc!=3)
 		printf("Input format not correct\n");
 	int sockfd = socket(AF_INET,SOCK_DGRAM,0);
+	int k;
 	if(sockfd==-1)
 		printf("Error in socket()\n");
 	server.sin_family=AF_INET;
 	server.sin_addr.s_addr=INADDR_ANY;
 	server.sin_port = htons(atoi(argv[2]));
+	socklen_t server_len = sizeof(server);
+	socklen_t client_len = sizeof(client);
 	char buffer[100];
-	printf("Enter a message to be sent to server:");
-	fgets(buffer,100,stdin);
-	if(sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server))<0)
-		printf("\nError in sendto");
+	for(;;)
+	{
+		printf("\nEnter a message to be sent to server:");
+		fgets(buffer,100,stdin);
+		if(atoi(buffer)==101)
+		{
+			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
+			if(k<0)
+				printf("Error in exit request");
+			printf("Exiting");
+			break;
+		}
+		else
+		{
+			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
+			if(k<0)
+				printf("\nError in sendto");
+			k = recvfrom(sockfd,buffer,100,0,(struct sockaddr *) &client,&client_len);
+			if(k<0)
+				printf("\nError in recvfrom()");
+			printf("Message from Server:%s\n",buffer);
+		}
+	}
 	return 0;
 	
 }
