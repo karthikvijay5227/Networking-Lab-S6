@@ -19,10 +19,27 @@ int main(int argc,char *argv[])
 		printf("Error in bind()\n");
 	char buffer[100];
 	socklen_t server_len = sizeof(server);
-	printf("Server waiting ...");
-	if(recvfrom(sockfd,buffer,100,0,(struct sockaddr *) &server,&server_len)<0)
-		printf("Error in recvfrom()");
-	printf("\nGot a datagram:%s",buffer);
+	for(;;)
+	{
+		int k = recvfrom(sockfd,buffer,100,0,(struct sockaddr *) &server,&server_len);
+		if(k<0)
+			printf("Error in recvfrom()");
+		if(atoi(buffer)==101)
+		{
+			printf("Received exit request from client!\nExiting!!!");
+			break;
+		}
+		else
+		{
+			printf("\nMessage from Client:%s",buffer);
+			printf("Enter data to send to client:");
+			fgets(buffer,100,stdin);
+			printf("\n");
+			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
+			if(k<0)
+				printf("Error in sendto()");
+		}
+	}
 	return 0;
 }
 	
