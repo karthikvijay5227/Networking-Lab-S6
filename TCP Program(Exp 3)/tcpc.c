@@ -29,8 +29,12 @@ int main()
 	{
 		printf("\n[To Server]:");
 		fgets(buf,100,stdin);
-		if(strcmp(buf,"Exit")==0 || strcmp(buf,"exit")==0)
+		if(atoi(buf)==1111)
+		{
+			k=send(sock_desc,buf,100,0);
+			printf("Exit Request Sent!\nExiting!!!");	
 			exit(0);
+		}
 		k=send(sock_desc,buf,100,0);
 		if(k==-1)
 			printf("Error in sending\n");
