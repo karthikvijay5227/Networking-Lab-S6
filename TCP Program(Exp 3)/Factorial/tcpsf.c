@@ -50,8 +50,11 @@ int main()
 			printf("Error in receiving\n");
 			
 		int c = atoi(buf);
-		if(c==-1)
+		if(c==1111)
+		{
+			printf("Exiting!!!");
 			exit(0);
+		}
 		printf("\nMessage got from client is:%s",buf);
 		int fact=1;
 		for(int i=1;i<=c;i++)
