@@ -23,12 +23,12 @@ int main(int argc,char *argv[])
 	{
 		printf("\nEnter a message to be sent to server:");
 		fgets(buffer,100,stdin);
-		if(atoi(buffer)==101)
+		if(atoi(buffer)==1111)
 		{
 			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
 			if(k<0)
 				printf("Error in exit request");
-			printf("Exiting");
+			printf("Exit Request Sent\nExiting");
 			break;
 		}
 		else
