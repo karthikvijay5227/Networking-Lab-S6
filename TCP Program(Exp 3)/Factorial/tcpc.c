@@ -32,7 +32,7 @@ int main()
 		if(atoi(buf)==1111)
 		{
 			k=send(sock_desc,buf,100,0);
-			printf("Exit Request Sent!\nExiting!!!");	
+			printf("Exit Request Sent!\nExiting!!!\n");	
 			exit(0);
 		}
 		k=send(sock_desc,buf,100,0);
