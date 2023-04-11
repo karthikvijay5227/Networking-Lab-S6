@@ -52,7 +52,7 @@ int main()
 		int c = atoi(buf);
 		if(c==1111)
 		{
-			printf("Exiting!!!");
+			printf("Exiting!!!\n");
 			exit(0);
 		}
 		printf("\nMessage got from client is:%s",buf);
