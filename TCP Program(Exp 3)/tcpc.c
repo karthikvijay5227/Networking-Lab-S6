@@ -29,10 +29,10 @@ int main()
 	{
 		printf("\n[To Server]:");
 		fgets(buf,100,stdin);
-		if(atoi(buf)==1111)
+		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
 		{
 			k=send(sock_desc,buf,100,0);
-			printf("Exit Request Sent!\nExiting!!!");	
+			printf("Exit Request Sent!\nExiting!!!\n");	
 			exit(0);
 		}
 		k=send(sock_desc,buf,100,0);
