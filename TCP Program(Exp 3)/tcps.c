@@ -48,9 +48,9 @@ int main()
 		printf("\n[From Client]:%s",buf);
 		if(k==-1)
 			printf("Error in receiving\n");
-		if(atoi(buf)==1111)
+		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
 		{
-			printf("Got Exit Request\nExiting!!!");
+			printf("Got Exit Request\nExiting!!!\n");
 			exit(0);
 		}
 		printf("[To Client]:");
