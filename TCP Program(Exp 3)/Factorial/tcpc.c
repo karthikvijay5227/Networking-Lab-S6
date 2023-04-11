@@ -29,7 +29,7 @@ int main()
 	{
 		printf("\nEnter data to be send:");
 		fgets(buf,100,stdin);
-		if(atoi(buf)==1111)
+		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
 		{
 			k=send(sock_desc,buf,100,0);
 			printf("Exit Request Sent!\nExiting!!!\n");	
