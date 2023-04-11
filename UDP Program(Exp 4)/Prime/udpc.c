@@ -23,7 +23,7 @@ int main(int argc,char *argv[])
 	{
 		printf("\nEnter the number to check prime:");
 		fgets(buffer,100,stdin);
-		if(atoi(buffer)==11111)
+		if(strncmp("exit",buffer,4)==0||strncmp("Exit",buffer,4)==0)
 		{
 			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
 			if(k<0)
