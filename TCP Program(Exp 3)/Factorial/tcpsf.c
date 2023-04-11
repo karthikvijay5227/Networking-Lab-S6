@@ -50,7 +50,7 @@ int main()
 			printf("Error in receiving\n");
 			
 		int c = atoi(buf);
-		if(c==1111)
+		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
 		{
 			printf("Exiting!!!\n");
 			exit(0);
