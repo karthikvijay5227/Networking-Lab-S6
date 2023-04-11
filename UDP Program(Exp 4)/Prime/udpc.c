@@ -23,12 +23,12 @@ int main(int argc,char *argv[])
 	{
 		printf("\nEnter the number to check prime:");
 		fgets(buffer,100,stdin);
-		if(atoi(buffer)==1111111)
+		if(atoi(buffer)==11111)
 		{
 			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
 			if(k<0)
 				printf("Error in exit request");
-			printf("Exiting");
+			printf("Exit Request Sent\nExiting");
 			break;
 		}
 		else
