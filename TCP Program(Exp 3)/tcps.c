@@ -50,7 +50,7 @@ int main()
 			printf("Error in receiving\n");
 		if(atoi(buf)==1111)
 		{
-			printf("Exiting!!!");
+			printf("Got Exit Request\nExiting!!!");
 			exit(0);
 		}
 		printf("[To Client]:");
