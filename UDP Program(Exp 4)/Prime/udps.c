@@ -25,7 +25,7 @@ int main(int argc,char *argv[])
 		int k = recvfrom(sockfd,buffer,100,0,(struct sockaddr *) &server,&server_len);
 		if(k<0)
 			printf("Error in recvfrom()");
-		if(atoi(buffer)==1111111)
+		if(atoi(buffer)==11111)
 		{
 			printf("Received exit request from client!\nExiting!!!");
 			break;
