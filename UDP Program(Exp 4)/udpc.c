@@ -23,7 +23,7 @@ int main(int argc,char *argv[])
 	{
 		printf("\nEnter a message to be sent to server:");
 		fgets(buffer,100,stdin);
-		if(atoi(buffer)==1111)
+		if(strncmp("exit",buffer,4)==0||strncmp("Exit",buffer,4)==0)
 		{
 			k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
 			if(k<0)
