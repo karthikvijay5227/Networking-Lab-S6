@@ -37,16 +37,16 @@ int main(int argc,char *argv[])
 		int k = recvfrom(sockfd,buffer,100,0,(struct sockaddr *) &server,&server_len);
 		if(k<0)
 			printf("Error in recvfrom()");
-		buffer[100] = '\0';
 		if(strncmp("exit",buffer,4)==0 || strncmp("Exit",buffer,4)==0)
 		{
 			printf("Received exit request from client!\nExiting!!!\n");
 			break;
 		}
+		printf("Message from Client:%s\n",buffer);
 		int n = atoi(buffer);
 		bool isPrime = is_prime(n);
-		char *res = isPrime ? "Number is Prime" : "Number is Not Prime";
-		k = sendto(sockfd,res,sizeof(res),0,(struct sockaddr*) &server,sizeof(server));
+		strcpy(buffer,isPrime ? "Number is Prime" : "Number is Not Prime");
+		k = sendto(sockfd,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
 		if(k<0)
 			printf("Error in sendto()");
 	}
