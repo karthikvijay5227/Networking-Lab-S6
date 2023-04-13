@@ -1,6 +1,6 @@
 ## UDP Program
 
-To run:
+To run:Create two terminal windows and type following commands
 
 Server:
 
