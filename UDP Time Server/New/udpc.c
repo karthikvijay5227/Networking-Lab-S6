@@ -13,15 +13,12 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 		printf("Input format not correct\n");
 	int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-	int k;
 	if (sockfd == -1)
 		printf("Error in socket()\n");
 	server.sin_family = AF_INET;
 	server.sin_addr.s_addr = INADDR_ANY;
 	server.sin_port = htons(atoi(argv[2]));
-	socklen_t server_len = sizeof(server);
 	socklen_t client_len = sizeof(client);
-	char buffer[100];
 	sendto(sockfd, &num, sizeof(num), 0, (struct sockaddr *)&server, sizeof(server));
 	time_t start_time = time(NULL);
 	clock_t start = clock();
