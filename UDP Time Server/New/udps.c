@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
 	server.sin_port = htons(atoi(argv[1]));
 	if (bind(sockfd, (struct sockaddr *)&server, sizeof(server)) < 0)
 		printf("Error in bind()\n");
-	char buffer[100];
 	socklen_t server_len = sizeof(server);
 	printf("Server is running on 127.0.0.1\n");
 	while(1)
