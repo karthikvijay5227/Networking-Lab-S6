@@ -5,7 +5,6 @@
 #include<stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <time.h>
 int main()
 {
 	char buf[100];
@@ -18,7 +17,7 @@ int main()
 	
 	if(sock_desc==-1)
 		printf("Error in Socket creation\n");
-	printf("Socket created successfully\n");
+	printf("Socket created successfully...\n");
 
 	server.sin_family=AF_INET;
 	server.sin_addr.s_addr=INADDR_ANY;
@@ -33,13 +32,13 @@ int main()
 	
 	if(k==-1)
 		printf("Error in binding\n");
-	printf("Socket binded successfully\n");
+	printf("Socket binded successfully...\n");
 		
 	k=listen(sock_desc,5);
 	
 	if(k==-1)
 		printf("Error in listening\n");
-	printf("Server listening\n");
+	printf("Server listening...\n");
 		
 	len=sizeof(client);
 	temp_sock_desc=accept(sock_desc,(struct sockaddr*) &client,&len);
