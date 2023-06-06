@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #define OUTPUT_RATE 1 
+#define BUCKET_CAPACITY 10
 
 void processIncomingPackets(int *bucket_size) 
 {
@@ -35,9 +36,6 @@ void processOutgoingPackets(int *bucket_size)
 
 int main() { 
     int bucket_size = 0;
-    int BUCKET_CAPACITY;
-    printf("Enter the bucket size:");
-    scanf("%d",&BUCKET_CAPACITY);
 
     while (true) {
         printf("\n");
