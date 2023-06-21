@@ -44,7 +44,7 @@ int main()
 		printf("Error in temporary socket creation\n");
 	for(;;)
 	{
-	        bzero(buf,sizeof(buf));
+		bzero(buf,sizeof(buf));
 		read(temp_sock_desc,buf,sizeof(buf));
 		printf("\n[From Client]:%s",buf);
 		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
