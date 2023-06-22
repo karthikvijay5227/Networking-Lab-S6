@@ -27,7 +27,7 @@ int main()
 		printf("Error in connecting to server\n");
 	for(;;)
 	{
-	        bzero(buf,sizeof(buf));
+		bzero(buf,sizeof(buf));
 		printf("\n[To Server]:");
 		fgets(buf,100,stdin);
 		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
