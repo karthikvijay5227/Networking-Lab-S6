@@ -30,17 +30,15 @@ int main()
 	        bzero(buf,sizeof(buf));
 		printf("\nEnter data to be send:");
 		fgets(buf,100,stdin);
+		write(sock_desc,buf,sizeof(buf));
 		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
 		{
-			write(sock_desc,buf,sizeof(buf));
 			printf("Exit Request Sent!\nExiting!!!\n");	
 			exit(0);
 		}
-		write(sock_desc,buf,sizeof(buf));
 		read(sock_desc,buf,sizeof(buf));
 		printf("The factorial of number passed to server is:%s\n",buf);
 	}
 	close(sock_desc);
 	return 0;
 }
-	
