@@ -3,7 +3,7 @@
 #include <sys/socket.h>
 #include <stdlib.h>
 #include <netdb.h>
-#include<time.h>
+#include <time.h>
 
 int main(int argc, char *argv[])
 {
