@@ -22,25 +22,21 @@ int main()
 	{
 		printf("\nEnter a message to be sent to server:");
 		fgets(buffer,100,stdin);
+		k = sendto(sock_desc,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
+		if(k == -1)
+			printf("Error in sending");
 		if(strncmp("exit",buffer,4)==0||strncmp("Exit",buffer,4)==0)
 		{
-			k = sendto(sock_desc,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
-			if(k<0)
-				printf("Error in exit request");
 			printf("Exit Request Sent\nExiting");
 			break;
 		}
 		else
 		{
-			k = sendto(sock_desc,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
-			if(k<0)
-				printf("\nError in sending");
 			k = recvfrom(sock_desc,buffer,100,0,(struct sockaddr *) &client,&len);
-			if(k<0)
+			if(k == -1)
 				printf("\nError in receiving");
 			printf("Message from Server:%s\n",buffer);
 		}
 	}
 	return 0;
-	
 }
