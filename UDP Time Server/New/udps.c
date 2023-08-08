@@ -3,7 +3,8 @@
 #include <sys/socket.h>
 #include <stdlib.h>
 #include <netdb.h>
-#include<time.h>
+#include <arpa/inet.h>
+#include <time.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,12 +16,12 @@ int main(int argc, char *argv[])
 	if (sockfd == -1)
 		printf("Error in socket()");
 	server.sin_family = AF_INET;
-	server.sin_addr.s_addr = INADDR_ANY;
+	server.sin_addr.s_addr = inet_addr("127.0.0.1");
 	server.sin_port = htons(atoi(argv[1]));
 	if (bind(sockfd, (struct sockaddr *)&server, sizeof(server)) < 0)
 		printf("Error in bind()\n");
 	socklen_t server_len = sizeof(server);
-	printf("Server is running on 127.0.0.1\n");
+	printf("Server is running on %s\n",inet_ntoa(server.sin_addr));
 	while(1)
 	{
 		recvfrom(sockfd, &num,sizeof(num), 0, (struct sockaddr *)&server, &server_len);
