@@ -3,7 +3,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include<unistd.h>
+#include <unistd.h>
 
 void main() {
     int socket_desc;
@@ -11,10 +11,8 @@ void main() {
     char buffer[1024];
 
     socket_desc = socket(AF_INET, SOCK_STREAM, 0);
-    if (socket_desc == -1) {
-        perror("Socket creation failed");
-        exit(EXIT_FAILURE);
-    }
+    if (socket_desc == -1)
+        printf("Socket creation failed");
 
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = INADDR_ANY;
