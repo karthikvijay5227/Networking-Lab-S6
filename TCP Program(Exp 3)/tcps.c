@@ -20,10 +20,9 @@ int main()
 
 	server.sin_family=AF_INET;
 	server.sin_addr.s_addr=INADDR_ANY;
-
 	server.sin_port=3003;
-	client.sin_family=AF_INET;
 	
+	client.sin_family=AF_INET;
 	client.sin_addr.s_addr=INADDR_ANY;
 	client.sin_port=3003;
 	
