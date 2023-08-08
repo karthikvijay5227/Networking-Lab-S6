@@ -24,7 +24,7 @@ int main()
 	for(;;)
 	{
 		k = recvfrom(sock_desc,buffer,100,0,(struct sockaddr *) &server,&len);
-		if(k<0)
+		if(k == -1)
 			printf("Error in receiving");
 		if(strncmp("exit",buffer,4)==0||strncmp("Exit",buffer,4)==0)
 		{
@@ -38,10 +38,9 @@ int main()
 			fgets(buffer,100,stdin);
 			printf("\n");
 			k = sendto(sock_desc,buffer,sizeof(buffer),0,(struct sockaddr*) &server,sizeof(server));
-			if(k<0)
+			if(k == -1)
 				printf("Error in sending");
 		}
 	}
 	return 0;
 }
-	
