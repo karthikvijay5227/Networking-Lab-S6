@@ -3,21 +3,22 @@
 #include <sys/socket.h>
 #include <stdlib.h>
 #include <netdb.h>
+#include <arpa/inet.h>
 #include <time.h>
 
-int main(int argc, char *argv[])
+int main()
 {
-	time_t current_time,rtt;
 	int num = 1;
+	time_t current_time,rtt;
 	struct sockaddr_in server, client;
-	if (argc != 3)
-		printf("Input format not correct\n");
 	int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
 	if (sockfd == -1)
 		printf("Error in socket()\n");
+		
 	server.sin_family = AF_INET;
-	server.sin_addr.s_addr = INADDR_ANY;
-	server.sin_port = htons(atoi(argv[2]));
+	server.sin_addr.s_addr = inet_addr("127.0.0.1");
+	server.sin_port = 2060;
+	
 	socklen_t client_len = sizeof(client);
 	sendto(sockfd, &num, sizeof(num), 0, (struct sockaddr *)&server, sizeof(server));
 	time_t start_time = time(NULL);
