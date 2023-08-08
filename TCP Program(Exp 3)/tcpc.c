@@ -19,8 +19,8 @@ int main()
 
 	client.sin_family=AF_INET;
 	client.sin_addr.s_addr=INADDR_ANY;
-
 	client.sin_port=3003;
+	
 	k=connect(sock_desc, (struct sockaddr*) &client, sizeof(client));
 
 	if(k==-1)
