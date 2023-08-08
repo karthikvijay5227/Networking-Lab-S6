@@ -29,13 +29,12 @@ int main()
 	{
 		printf("\nEnter data to be send:");
 		fgets(buf,100,stdin);
+		k=send(sock_desc,buf,100,0);
 		if(strncmp("exit",buf,4)==0 || strncmp("Exit",buf,4)==0)
 		{
-			k=send(sock_desc,buf,100,0);
 			printf("Exit Request Sent!\nExiting!!!\n");	
 			exit(0);
 		}
-		k=send(sock_desc,buf,100,0);
 		if(k==-1)
 			printf("Error in sending\n");
 		k=recv(sock_desc,buf,100,0);
