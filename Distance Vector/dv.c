@@ -63,7 +63,6 @@ void displayRoutes()
 
 int main()
 {
-    int i, j;
     printf("Number of nodes: ");
     scanf("%d", &n);
     readCostMatrix();
